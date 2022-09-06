@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--全局定义springboot父项目版本号-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!--项目描述-->
+    <groupId>com.compose</groupId>
+    <artifactId>docker</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>docker</name>
+    <description>docker compose test</description>
+
+
+    <!--定义springcloud使用版本号等属性信息-->
+    <properties>
+        <java.version>1.8</java.version>
+        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
+        <spring.cloud.version>Hoxton.SR3</spring.cloud.version>
+        <lombok.version>1.18.12</lombok.version>
+    </properties>
+
+    <!--packaging需要指定为pom-->
+    <packaging>pom</packaging>
+
+    <!--子工程目录，每添加一个model，需要将子工程的model名注册到此-->
+    <modules>
+        <module>user</module>
+        <module>product</module>
+    </modules>
+
+
+
+
+    <!--引入全体项目都需要的父依赖，引入后，子项目不需要引入，继承父项目就可以-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+    <!--全局管理springcloud版本,并不会引入具体依赖-->
+    <!--全局引入springcloudalibaba下载依赖地址,并不会引入依赖-->
+    <!--在 < dependencyManagement> 里面添加 springcloud 和 springcloud alibaba的 bom 信息，这将允许您省略任何 Maven 依赖项的版本，而是将版本控制委派给 BOM-->
+    <dependencyManagement>
+        <dependencies>
+            <!--引入阿里巴巴下载仓库-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--引入springcloud下载仓库-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.5.RELEASE</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

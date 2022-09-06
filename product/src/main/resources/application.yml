@@ -1,0 +1,10 @@
+server:
+  port: 9098
+spring:
+  application:
+    name: compose-product-feign
+  cloud:
+    nacos:
+      discovery:
+        namespace: 1351e39b-bd90-4c1a-8610-fc1e21dc4bbd
+        server-addr: 172.17.0.3:8848
