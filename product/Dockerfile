@@ -4,7 +4,7 @@ FROM java:openjdk-8-jdk-alpine
 #作者
 MAINTAINER Ximenes <cristianoxiaoming@gmail.com>
 
-RUN cd /OneDrive/学习/Docker/IDEA_Docker_Compose/docker/product && mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
+RUN cd /data/docker/docker_compose/product && mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
 
 #系统编码

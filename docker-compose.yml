@@ -5,14 +5,14 @@ services:
       context: product
       dockerfile: Dockerfile
     container_name: product
-    depends_on:
-      - nacos
+#    depends_on:
+#      - nacos
     restart: always
   user:
     build:
       context: user
       dockerfile: Dockerfile
     container_name: user
-    depends_on:
-      - nacos
+#    depends_on:
+#      - nacos
     restart: always
